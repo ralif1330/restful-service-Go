@@ -1,6 +1,11 @@
 package main
 
-import "github.com/labstack/echo/v4"
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+
+)
 
 type MenuItem struct {
 	Name      string
@@ -23,7 +28,7 @@ func getFoodMenu(c echo.Context) error {
 		},
 	}
 
-	return c.JSON(201, foodMenu)
+	return c.JSON(http.StatusOK, foodMenu)
 }
 
 func main() {
