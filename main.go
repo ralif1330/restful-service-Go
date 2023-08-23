@@ -28,7 +28,29 @@ func getFoodMenu(c echo.Context) error {
 		},
 	}
 
-	return c.JSON(http.StatusOK, foodMenu)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"data" : foodMenu,
+	})
+}
+
+func getDrinksMenu(c echo.Context) error {
+
+	drinkMenu := []MenuItem{
+		{
+			Name:      "Milo",
+			OrderCode: "milo",
+			Price:     3000,
+		},
+		{
+			Name:      "Susu",
+			OrderCode: "susu",
+			Price:     2000,
+		},
+	}
+
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"data" : drinkMenu,
+	})
 }
 
 func main() {
@@ -36,6 +58,8 @@ func main() {
 	e := echo.New()
 	// localhost:14045/menu/food
 	e.GET("/menu/food", getFoodMenu)
+	e.GET("/menu/drinks", getDrinksMenu)
+
 	e.Logger.Fatal(e.Start(":14045"))
 
 }
