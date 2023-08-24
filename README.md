@@ -7,3 +7,4 @@ Menggunakan
 - PostgreSQL
 - DBeaver
 - Pgadmin4
+- Clean Architecture
