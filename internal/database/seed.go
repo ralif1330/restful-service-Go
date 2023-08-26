@@ -2,53 +2,46 @@ package database
 
 import (
 	"fmt"
+	"porto-restKelasWork/internal/model"
+	"porto-restKelasWork/internal/model/constant"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-func seedDB() {
+func seedDB(db *gorm.DB) {
 
-	foodMenu := []MenuItem{
+	foodMenu := []model.MenuItem{
 		{
 			Name:      "Tempe",
 			OrderCode: "tempe",
 			Price:     5000,
-			Type:      MenuTypeFood,
+			Type:      constant.MenuTypeFood,
 		},
 		{
 			Name:      "Terong",
 			OrderCode: "terong",
 			Price:     7000,
-			Type:      MenuTypeFood,
+			Type:      constant.MenuTypeFood,
 		},
 	}
 
-	drinkMenu := []MenuItem{
+	drinkMenu := []model.MenuItem{
 		{
 			Name:      "Milo",
 			OrderCode: "milo",
 			Price:     3000,
-			Type:      MenuTypeDrink,
+			Type:      constant.MenuTypeDrink,
 		},
 		{
 			Name:      "Susu",
 			OrderCode: "susu",
 			Price:     2000,
-			Type:      MenuTypeDrink,
+			Type:      constant.MenuTypeDrink,
 		},
 	}
 
-	fmt.Println(drinkMenu, foodMenu)
-
-	db, err := gorm.Open(postgres.Open(dbAddress))
-	if err != nil {
-		panic(err)
-	}
-
-	db.AutoMigrate(&MenuItem{})
-
-	if err := db.First(&MenuItem{}).Error; err == gorm.ErrRecordNotFound {
+	if err := db.First(&model.MenuItem{}).Error; err == gorm.ErrRecordNotFound {
 		db.Create(&foodMenu)
 		db.Create(&drinkMenu)
 	}
