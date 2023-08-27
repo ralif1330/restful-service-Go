@@ -3,7 +3,6 @@ package database
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-
 )
 
 func GetDB(dbAddress string) *gorm.DB {
@@ -12,5 +11,6 @@ func GetDB(dbAddress string) *gorm.DB {
 		panic("failed to connect to database")
 	}
 
+	seedDB(db)
 	return db
 }

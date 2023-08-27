@@ -1,11 +1,9 @@
 package database
 
 import (
-	"fmt"
 	"porto-restKelasWork/internal/model"
 	"porto-restKelasWork/internal/model/constant"
 
-	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
