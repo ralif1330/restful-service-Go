@@ -23,5 +23,5 @@ func (m *menuRepo) GetMenu(menuType string) ([]model.MenuItem, error) {
 		return nil, err
 	}
 
-	return MenuData, nil
+	return menuData, nil
 }

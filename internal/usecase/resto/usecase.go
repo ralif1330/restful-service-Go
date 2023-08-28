@@ -2,6 +2,6 @@ package resto
 
 import "porto-restKelasWork/internal/model"
 
-type UseCase interface {
+type GetUseCase interface {
 	GetMenu(menuType string) ([]model.MenuItem, error)
 }
